@@ -64,8 +64,8 @@ mean_alpha_peak=np.mean(alpha_channel_peak, axis=0)
 
 # == SAVE FILE ==
 # Save to CSV file (could be also TSV)
-df_alpha = pd.DataFrame(alpha_channel_peak, index=canales, columns=['alpha_peak'])
-df_alpha.to_csv(os.path.join('out_dir','alpha_peak.csv'))
+df_alpha = pd.DataFrame(alpha_channel_peak, index=canales, columns=['peak_amplitude'])
+df_alpha.to_csv(os.path.join('out_dir','peak_amplitude.csv'))
 
 
 # ==== PLOT FIGURES ====
@@ -80,5 +80,5 @@ sns.histplot(data=alpha_channel_peak, binwidth=0.25,kde=True,kde_kws={'cut':10})
 plt.xlabel('Alpha peak frequency (Hz)')
 sns.despine()
 # Save fig
-plt.savefig(os.path.join('out_figs','hist_alpha_peak.png'))
+plt.savefig(os.path.join('out_figs','hist_peak_amplitude.png'))
 plt.close()
