@@ -32,7 +32,7 @@ with open(__location__+'/config.json') as config_json:
 fname = config['psd']
 
 # == LOAD DATA ==
-df_psd = pd.read_csv(fname)
+df_psd = pd.read_csv(fname, sep = '\t')
 canales = df_psd['channels'].copy()
 
 #Number of frequencies computed for the PSD
@@ -65,7 +65,7 @@ mean_alpha_peak=np.mean(alpha_channel_peak, axis=0)
 # == SAVE FILE ==
 # Save to CSV file (could be also TSV)
 df_alpha = pd.DataFrame(alpha_channel_peak, index=canales, columns=['peak_amplitude'])
-df_alpha.to_csv(os.path.join('out_dir','peak_amplitude.csv'))
+df_alpha.to_csv(os.path.join('out_dir','psd.tsv'), sep = '\t', index=False))
 
 
 # ==== PLOT FIGURES ====
