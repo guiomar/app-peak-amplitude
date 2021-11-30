@@ -30,6 +30,8 @@ with open(__location__+'/config.json') as config_json:
 
 # == GET CONFIG VALUES ==
 fname = config['psd']
+fmin  = config['fmin']
+fmax  = config['fmax']
 
 # == LOAD DATA ==
 df_psd = pd.read_csv(fname, sep = '\t')
@@ -48,23 +50,21 @@ nchannels = psd_welch.shape[0]
 
 
 # Extract the frequencies that fall inside the alpha band
-fmin = 7
-fmax = 13
 ifreqs = [i for i, f in zip(range(0, len(freqs)), freqs) if f > fmin  and f < fmax]
-alpha_freqs = np.take(freqs, ifreqs)
+band_freqs = np.take(freqs, ifreqs)
 
 
 # ==== FIND ALPHA MEAN AMPLITUDE VALUE ====
-alpha_channel_peak = np.mean(psd_welch[:,ifreqs], axis=1)
+channel_peak = np.mean(psd_welch[:,ifreqs], axis=1)
 
 
 # Average value across all channels
-mean_alpha_peak=np.mean(alpha_channel_peak, axis=0)
+mean_peak=np.mean(channel_peak, axis=0)
 
 
 # == SAVE FILE ==
-# Save to CSV file (could be also TSV)
-df_alpha = pd.DataFrame(alpha_channel_peak, index=canales, columns=['peak'])
+# Save to TSV file
+df_alpha = pd.DataFrame(channel_peak, index=canales, columns=['peak'])
 df_alpha.to_csv(os.path.join('out_dir','psd.tsv'), sep ='\t')
 
 
@@ -75,9 +75,9 @@ plt.figure(1)
 #custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 #sns.set_theme(style="ticks", rc=custom_params)
 sns.set_theme(style="ticks")
-sns.histplot(data=alpha_channel_peak, binwidth=0.25,kde=True,kde_kws={'cut':10})
+sns.histplot(data=channel_peak, binwidth=0.25,kde=True,kde_kws={'cut':10})
 #plt.xlim(xmin=fmin, xmax=fmax)
-plt.xlabel('Alpha peak frequency (Hz)')
+plt.xlabel('Peak amplitude')
 sns.despine()
 # Save fig
 plt.savefig(os.path.join('out_figs','hist_peak_amplitude.png'))
