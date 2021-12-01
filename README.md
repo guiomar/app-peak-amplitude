@@ -1,9 +1,9 @@
-# Mean peak amplitude of PSD data
+# Mean amplitude of PSD data
 
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.583-blue.svg)](https://doi.org/10.25663/brainlife.app.583)
 
-Compute the mean peak amplitude of a frequency range of PSD values
+Compute the mean amplitude of a frequency range of PSD values
 
 ## app-peak-amplitude documentation
 
@@ -11,7 +11,7 @@ Compute the mean peak amplitude of a frequency range of PSD values
 2) Input file is:
     * a `.tsv` file containing the Power Spectral Densities
 5) Ouput files are:
-    * a `.tsv` file containing the peak amplitude for each channel
+    * a `.tsv` file containing the mean amplitude for each channel
     * a plot with the distribution of all peak amplitudes across channels
     * a plot the PSD peak for each channel (peak found in the psd)
 
