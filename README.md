@@ -7,7 +7,7 @@ Compute the mean amplitude of a frequency range of PSD values
 
 ## app-peak-amplitude documentation
 
-1) Detect mean peak amplitude for each channel
+1) Detect mean amplitude for each channel
 2) Input file is:
     * a `.tsv` file containing the Power Spectral Densities
 5) Ouput files are:
@@ -31,4 +31,3 @@ brainlife.io is publicly funded and for the sustainability of the project it is 
 [![NIH-NIBIB-R01EB029272](https://img.shields.io/badge/NIH_NIBIB-R01EB029272-green.svg)](https://grantome.com/grant/NIH/R01-EB029272-01)
 
 #### MIT Copyright (c) 2021 brainlife.io The University of Texas at Austin and Indiana University
-
