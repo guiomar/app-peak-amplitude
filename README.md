@@ -1,5 +1,47 @@
 # Mean amplitude of PSD data
 
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+> **Computes the mean power spectral density amplitude of each channel within a chosen frequency band and outputs a TSV of per-channel values and a histogram.**
+
+Reads a PSD table (channels by frequencies), averages the PSD values of frequencies strictly between fmin and fmax for every channel, and plots the distribution across channels. Use it to summarize band power (e.g. alpha) of MEG/EEG data. It needs a PSD .tsv with a 'channels' column.
+
+| | |
+|---|---|
+| 📥 **Inputs** | `neuro/meeg/psd` |
+| 📤 **Outputs** | `neuro/meeg/psd` · `raw` |
+| 🐳 **Container** | `brainlife/mne:0.23dev` |
+| ⚙️ **Resources** | 1 CPUs |
+| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.583](https://doi.org/10.25663/brainlife.app.583) |
+
+#### 📥 Inputs
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `psd01` | `neuro/meeg/psd` | yes | Power spectral density table (.tsv) with one row per channel and one column per frequency. Must have a 'channels' column; frequency column names must be numeric. |
+
+#### 📤 Outputs
+
+| Output | Datatype | Description |
+|---|---|---|
+| `out_dir` | `neuro/meeg/psd` | psd.tsv with the mean band amplitude of each channel. |
+| `out_figs` | `raw` | Histogram of mean band amplitude across channels. |
+
+<details>
+<summary><b>⚙️ Parameters</b> (2)</summary>
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `fmin` | number | `8` | Fmin of frequency range for mean amplitude of PSD values |
+| `fmax` | number | `12` | Fmax of frequency range for mean amplitude of PSD values |
+
+</details>
+
+📚 **References used by this App:**
+- Hayashi S, Caron BA, et al. brainlife.io: A decentralized and open source cloud platform to support neuroscience research. arXiv (2023).
+
+<!-- brainlife-app:end -->
+
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.583-blue.svg)](https://doi.org/10.25663/brainlife.app.583)
 
